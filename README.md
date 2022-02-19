@@ -17,7 +17,7 @@ Need to add a .env and add mysql password to work properly on own machine.
 
 
 ## Image of deployed application
-![Screenshot of Deployed App](images/note-taker.png)
+![Screenshot of Deployed App](insert image here once complete)
 
 ## License 
 Using the MIT License
