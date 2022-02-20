@@ -39,30 +39,55 @@ const promptUser = () => {
     ]) .then ((response) => {
         switch(response.what) {
             case "View all departments":
-                // called at bottom of 
+                // called below
                 viewAllDepartments()
+                break;
+            case "View all roles":
+                viewAllRoles()
+                break;
+            case "View all employees":
+                vieAllEmployees
                 break;
             case "Add role":
                 addRole()
-                break;
+                break; 
+            // case "Add an employee":
+            //     addEmployee()
+            //     break;
+            // case "Update an employee role":
+            //     updateRole()
+            //     break;
             case "Quit":
                 db.end()
         }
     })
 }
 
-
+// functions for when something is selected 
 const viewAllDepartments = () => {
     db.query("SELECT * FROM department", (err, res) => {
         if (err) 
             throw err;
         console.table(res)
         promptUser();
-    }
-    )
+    })
 }
 const viewAllRoles = () => {
-    db.query("SELECT * FROM department")
+    db.query("SELECT title FROM role_table", (err, res) => {
+        if (err)
+            throw err;
+        console.table(res)
+        promptUser();
+    })
+}
+
+const vieAllEmployees = () => {
+    db.query("SELECT first_name, last_name FROM employees", (err, res) => {
+        if (err)
+        throw err;
+    console.table(res)
+    promptUser();
+    })
 }
 
 const addRole = () => {
@@ -106,3 +131,19 @@ const addRole = () => {
         })
     })
 }
+
+const addEmployee = () => {
+// function to insert data into the employees table
+// INSERT INTO employees (field 1, field 2)
+    // values 
+}
+
+
+
+const updateRole = () => {
+// add function to UPDATE 
+    // set
+        // column name
+    // WHERE
+        // condition 
+} 
