@@ -35,7 +35,6 @@ const promptUser = () => {
                 "Quit",
             ],
         },
-// create 28-31 for all choices 
     ]) .then ((response) => {
         switch(response.what) {
             case "View all departments":
@@ -46,14 +45,17 @@ const promptUser = () => {
                 viewAllRoles()
                 break;
             case "View all employees":
-                vieAllEmployees
+                viewAllEmployees()
                 break;
+            case "Add a department":
+                 addDepartment()
+                 break;
             case "Add role":
                 addRole()
                 break; 
-            // case "Add an employee":
-            //     addEmployee()
-            //     break;
+            case "Add an employee":
+                addEmployee()
+                break;
             // case "Update an employee role":
             //     updateRole()
             //     break;
@@ -63,7 +65,7 @@ const promptUser = () => {
     })
 }
 
-// functions for when something is selected 
+// function for view all departments
 const viewAllDepartments = () => {
     db.query("SELECT * FROM department", (err, res) => {
         if (err) 
@@ -72,6 +74,7 @@ const viewAllDepartments = () => {
         promptUser();
     })
 }
+// view all roles needs selecting from role table
 const viewAllRoles = () => {
     db.query("SELECT title FROM role_table", (err, res) => {
         if (err)
@@ -81,7 +84,8 @@ const viewAllRoles = () => {
     })
 }
 
-const vieAllEmployees = () => {
+// view all employees
+const viewAllEmployees = () => {
     db.query("SELECT first_name, last_name FROM employees", (err, res) => {
         if (err)
         throw err;
@@ -90,6 +94,29 @@ const vieAllEmployees = () => {
     })
 }
 
+const addDepartment = () => {
+        inquirer.prompt(
+            {
+                type: "input",
+                name: "department",
+                message: "Insert new department",
+            })
+        .then(res => {
+            db.query("INSERT INTO department SET ?",
+            {
+                dep_name: res.department
+            },
+            (err, res) => {
+                if (err)
+                throw err;
+            console.log (`Department added! Select "view all departments" to see addition.`);
+            promptUser();
+            })
+        })
+    }
+
+
+// add role need to first select query from department
 const addRole = () => {
     db.query("SELECT * FROM department", (err, res) => {
         if (err)
@@ -99,17 +126,17 @@ const addRole = () => {
             {
             type: "input",
             name: "role",
-            message: "Insert the name of the new role",
+            message: "Insert the name of the new role (required)",
             },
             {
             type: "input",
             name: "salary",
-            message: "What is this role's salary",
+            message: "What is this role's salary (required)",
             },
             {
             type: "list",
             name: "depID",
-            message: "Please select the Department ID",
+            message: "Please select the Department ID (required)",
             choices:
             // takes all of the values from department and returns 
                 res.map(department => department.dep_name)
@@ -124,7 +151,7 @@ const addRole = () => {
                 if (err) 
                     throw err;
                     
-            console.log("Role successfully added")
+            console.log(`Role successfully added. Select "view all roles" to see addition`)
             promptUser(); 
         }
             ) 
@@ -133,12 +160,44 @@ const addRole = () => {
 }
 
 const addEmployee = () => {
-// function to insert data into the employees table
-// INSERT INTO employees (field 1, field 2)
-    // values 
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "Insert the new employee's first name (required)"
+        },
+        {
+            type: "input",
+            name: "lastName",
+            message: "Insert the new employee's last name (required)"
+        },
+        {
+            type: "input",
+            name: "roleID",
+            message: "Insert the new employee's role ID (required)"
+        },
+        {
+            type: "input",
+            name: "managerID",
+            message: "Insert ID of employee's new manager (required)"
+        }
+    ])
+    .then(res => {
+        db.query("INSERT INTO employees SET ?",
+        {
+            first_name: res.firstName,
+            last_name: res.lastName,
+            role_id: res.roleID,
+            manager_id: res.managerID,
+        },
+        (err, res) => {
+            if (err)
+            throw err;
+            console.log(`New Employee added! Select "view all employees" to see addition.`);
+            promptUser();
+        })
+    })
 }
-
-
 
 const updateRole = () => {
 // add function to UPDATE 
