@@ -1,16 +1,18 @@
+USE yorkEnterprise;
+
 INSERT INTO department
     (dep_name)
 VALUES 
     ('Product'),
     ('Sales'),
     ('Legal'),
-    ('Accounting'),
+    ('Accounting');
 
 INSERT INTO role_table
-(title, salary, department_id  )
+(title, salary, department_id)
 VALUES
-  ('Sr Enginner', 180000.00, 1 ),
-  ('Jr Engineer', 110000.00, 1 ),
+  ('Sr Engineer', 180000.00, 1),
+  ('Jr Engineer', 110000.00, 1),
   ('Account Manager', 90000.00, 2),
   ('Business Development Rep', 70000.00, 2),
   ('Lawyer', 100000.00, 3),
@@ -33,12 +35,3 @@ VALUES
   ('Rubeus', 'Hagrid', 7, NULL),
   ('Neville', 'Longbottom', 8, 8);
 
-   ('Albus', 'Dumbledore', 2, NULL ),
-  ('Harry', 'Potter', 1, 1 ),
-  ('Ron', 'Weasley', 3, NULL ),
-  ('Hermione', 'Granger', 4, 3 ),
-  ('Draco', 'Malfoy', 5, NULL),
-  ('Lord', 'Voldemort', 6, 5),
-  ('Severus', 'Snape', 1, 4),
-  ('Rubeus', 'Hagrid', 7, NULL),
-  ('Neville', 'Longbottom', 8, 8);
