@@ -28,12 +28,11 @@ const promptUser = () => {
                 "View all departments",
                 "View all roles",
                 "View all employees",
-                "View all employees by manager",
                 "Add a department",
-                "Add an employee",
                 "Add role",
+                "Add an employee",
                 "Update an empoyee role",
-                "quit",
+                "Quit",
             ],
         },
 // create 28-31 for all choices 
@@ -46,7 +45,7 @@ const promptUser = () => {
             case "Add role":
                 addRole()
                 break;
-            case "quit":
+            case "Quit":
                 db.end()
         }
     })

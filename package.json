@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
     "url": "https://github.com/wyork63/will-employee-tracker/issues"
   },
   "homepage": "https://github.com/wyork63/will-employee-tracker#readme",
-  
+
   "dependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^16.0.0",
