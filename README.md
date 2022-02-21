@@ -2,7 +2,7 @@
 
 
 ## Deployed Application
-[Click here to watch a video of the deployed application] (insert link when complete)
+[Click here to watch a video of the deployed application](https://youtu.be/zzM9RUHUot0)
 
 ## Description 
 An application ran from the command line using mySQL 2, inquirer, and the console.table package. This application helps track employees of a company. Users can view all departments, roles, and employees of the company. As well as be able to add and update information.
